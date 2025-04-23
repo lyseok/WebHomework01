@@ -22,8 +22,11 @@ public class Factorial2 extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "양의 정수를 입력하세요.");
 			return;
 		}
-		PrintWriter out = response.getWriter();
-		out.print(new Gson().toJson(output));
+		try(
+			PrintWriter out = response.getWriter();				
+		){
+			out.print(new Gson().toJson(output));			
+		}
 	}
 
 }
